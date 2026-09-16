@@ -39,6 +39,7 @@ something the `update-docs` skill keeps current.
 
 - `.claude/` — Claude Code extras (hooks, subagents, slash UX)
 - `agents/skills/` — portable skills for any agent (Antigravity CLI, Codex, Cursor, OpenCode, etc.)
+- `hooks/` — portable git hooks: mechanical enforcement (secret scan, destructive-bash guard, conventional commits, ADR nudge) that runs regardless of which agent is driving
 - `docs/` — generated project standing record and per-task specs/plans
 
 ## Working principles
