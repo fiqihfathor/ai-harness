@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - "template/agents/skills/**"
+      - "template/agents/agents/**"
       - "template/.claude/skills/**"
   push:
     branches: [main]
     paths:
       - "template/agents/skills/**"
+      - "template/agents/agents/**"
       - "template/.claude/skills/**"
 
 jobs:
@@ -50,6 +52,26 @@ jobs:
           for f in template/.claude/skills/*/SKILL.md; do
             [ -f "$f" ] || { echo "FAIL: $f missing"; fail=1; continue; }
             grep -q "^description:" "$f" || { echo "FAIL: $f — no description"; fail=1; }
+            echo "OK: $f"
+          done
+          exit $fail
+
+      - name: Validate agent frontmatter (portable agents layer)
+        run: |
+          set -eu
+          fail=0
+          for f in template/agents/agents/*/agent.md; do
+            [ -f "$f" ] || { echo "FAIL: $f missing"; fail=1; continue; }
+            name=$(awk '/^name:/{print $2; exit}' "$f")
+            if [ -z "$name" ]; then
+              echo "FAIL: $f — missing 'name' in frontmatter"; fail=1
+            elif ! echo "$name" | grep -qE '^[a-z0-9]+(-[a-z0-9]+)*$'; then
+              echo "FAIL: $f — name '$name' not kebab-case"; fail=1
+            fi
+            desc=$(awk '/^description:/{sub(/^description: */,""); print; exit}' "$f")
+            if [ -z "$desc" ] || [ "${#desc}" -lt 20 ]; then
+              echo "FAIL: $f — missing or too-short 'description'"; fail=1
+            fi
             echo "OK: $f"
           done
           exit $fail
