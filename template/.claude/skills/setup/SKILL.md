@@ -62,13 +62,28 @@ and one-shot (run once per project, or rarely to refresh) — distinct from
 5. **Fill `CLAUDE.md` placeholders** (project name, overview, build/test/lint/run
    commands) based on the interview. Leave the working principles section as-is.
 
-6. **Report back**: what was created, and a short list of remaining `TODO`s the
+6. **Reconcile `CLAUDE.md` with the actual docs layout**: the
+   "Project docs" list must reference the files that exist, by their
+   real names and paths. If the project keeps an equivalent under a
+   different name (e.g. `docs/ops.md` instead of `docs/runbook.md`),
+   reference the project's name and note the mapping. Remove references
+   to doc types the project deliberately doesn't have.
+
+7. **Report back**: what was created, and a short list of remaining `TODO`s the
    user should fill in later (e.g. via `/update-docs` or by hand).
 
 ## Notes
 
-- If `docs/` already has content, don't overwrite silently — show what's there
-  and ask whether to fill gaps, leave it, or restart that file.
+- Existing docs are the project's source of truth. Read every file in
+  `docs/` FIRST. For each file, decide WITH the user (never silently):
+  (a) keep as-is — the harness will reference it; (b) merge — add missing
+  sections from the template while preserving existing content; or
+  (c) replace — only on explicit user request, backing up the original
+  to `<name>.bak` first. Never write a docs file that already has
+  content without an explicit per-file decision.
+- Seed ADR numbering: check `docs/adr/` for existing numbered ADRs and
+  use the NEXT available number (e.g. if `0003-…` exists, the seed
+  becomes `0004-…`). Never hardcode `0001-` when the directory has ADRs.
 - This skill produces the project's first complete doc set; `/brainstorm` and
   `/implement` keep it current afterward (see "Living docs" — they always ask
   before editing).
