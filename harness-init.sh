@@ -2,11 +2,12 @@
 # harness-init.sh — copy the ai-harness template into a project repo.
 #
 # Usage:
-#   ./harness-init.sh [TARGET_DIR] [--force] [--dry-run]
+#   ./harness-init.sh [TARGET_DIR] [--force] [--merge] [--dry-run]
 #
 # Copies CLAUDE.md, AGENTS.md, .claude/, and agents/ from this repo's template/ into TARGET_DIR
 # (default: current directory). Never overwrites existing files unless
-# --force is given (in which case the original is backed up to *.bak first).
+# --force is given (in which case the original is backed up to *.bak first),
+# or --merge is given (appends template content to existing CLAUDE.md/AGENTS.md).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -14,12 +15,13 @@ TEMPLATE_DIR="$SCRIPT_DIR/template"
 
 usage() {
   cat <<'EOF'
-Usage: harness-init.sh [TARGET_DIR] [--force] [--dry-run]
+Usage: harness-init.sh [TARGET_DIR] [--force] [--merge] [--dry-run]
 
 Copies the ai-harness template (CLAUDE.md, AGENTS.md, .claude/, agents/) into TARGET_DIR.
 
   TARGET_DIR    Directory to initialize (default: current directory)
   --force       Overwrite existing files (backs up the original to *.bak first)
+  --merge       Safely merge CLAUDE.md/AGENTS.md into existing files (append wrapped block)
   --dry-run     Print what would happen; change nothing
   -h, --help    Show this help
 EOF
@@ -27,6 +29,7 @@ EOF
 
 TARGET_DIR="."
 FORCE=0
+MERGE=0
 DRY_RUN=0
 
 for arg in "$@"; do
@@ -37,6 +40,9 @@ for arg in "$@"; do
       ;;
     --force)
       FORCE=1
+      ;;
+    --merge)
+      MERGE=1
       ;;
     --dry-run)
       DRY_RUN=1
@@ -52,6 +58,12 @@ for arg in "$@"; do
   esac
 done
 
+if [[ "$FORCE" -eq 1 && "$MERGE" -eq 1 ]]; then
+  echo "Error: --force and --merge are mutually exclusive." >&2
+  usage >&2
+  exit 1
+fi
+
 if [[ ! -d "$TARGET_DIR" ]]; then
   echo "Error: target directory does not exist: $TARGET_DIR" >&2
   exit 1
@@ -65,6 +77,7 @@ fi
 TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
 
 created=()
+merged=()
 skipped=()
 overwritten=()
 
@@ -74,7 +87,30 @@ while IFS= read -r -d '' src_file; do
   dest_file="$TARGET_DIR/$rel_path"
 
   if [[ -e "$dest_file" ]]; then
-    if [[ "$FORCE" -eq 1 ]]; then
+    if [[ "$MERGE" -eq 1 && ( "$rel_path" == "CLAUDE.md" || "$rel_path" == "AGENTS.md" ) ]]; then
+      if grep -q '<!-- ai-harness:begin:' "$dest_file"; then
+        if [[ "$DRY_RUN" -eq 1 ]]; then
+          echo "[dry-run] would skip (already merged): $rel_path"
+        fi
+        skipped+=("$rel_path (already merged)")
+      else
+        if [[ "$DRY_RUN" -eq 1 ]]; then
+          echo "[dry-run] would merge: $rel_path"
+        else
+          if [[ -s "$dest_file" ]] && [[ $(tail -c 1 "$dest_file" | wc -l) -eq 0 ]]; then
+            echo "" >> "$dest_file"
+          fi
+          echo "" >> "$dest_file"
+          echo "<!-- ai-harness:begin:v1 -->" >> "$dest_file"
+          cat "$src_file" >> "$dest_file"
+          if [[ $(tail -c 1 "$src_file" | wc -l) -eq 0 ]]; then
+            echo "" >> "$dest_file"
+          fi
+          echo "<!-- ai-harness:end:v1 -->" >> "$dest_file"
+        fi
+        merged+=("$rel_path")
+      fi
+    elif [[ "$FORCE" -eq 1 ]]; then
       if [[ "$DRY_RUN" -eq 1 ]]; then
         echo "[dry-run] would back up and overwrite: $rel_path"
       else
@@ -101,6 +137,7 @@ done < <(find "$TEMPLATE_DIR" -type f -print0)
 echo ""
 echo "Summary for $TARGET_DIR:"
 echo "  Created:     ${#created[@]}"
+echo "  Merged:      ${#merged[@]}"
 echo "  Overwritten: ${#overwritten[@]}"
 echo "  Skipped (already exist): ${#skipped[@]}"
 
@@ -117,7 +154,7 @@ if [[ "$DRY_RUN" -eq 1 ]]; then
   echo "(dry run — no files were written)"
 fi
 
-if [[ "${#created[@]}" -eq 0 && "${#overwritten[@]}" -eq 0 && "$DRY_RUN" -eq 0 ]]; then
+if [[ "${#created[@]}" -eq 0 && "${#merged[@]}" -eq 0 && "${#overwritten[@]}" -eq 0 && "$DRY_RUN" -eq 0 ]]; then
   echo ""
   echo "Nothing to do — all template files already exist. Use --force to overwrite."
 fi

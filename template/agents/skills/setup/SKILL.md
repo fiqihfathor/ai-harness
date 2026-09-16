@@ -13,7 +13,7 @@ the `brainstorm` skill, which is task-scoped and run for every feature.
 
 ## Process
 
-1. **Locate the templates.** Read each skeleton in `.claude/templates/docs/`:
+1. **Locate the templates.** Read each skeleton in `agents/templates/docs/`:
    `constitution.md`, `project-overview.md`, `tech-stack.md`, `architecture.md`,
    `dev-guide.md`, `runbook.md`, `adr/README.md`,
    `adr/0001-record-architecture-decisions.md`.
@@ -65,13 +65,30 @@ the `brainstorm` skill, which is task-scoped and run for every feature.
 5. **Fill `AGENTS.md` (and `CLAUDE.md` if present) placeholders** (project name, overview, build/test/lint/run
    commands) based on the interview. Leave the working principles section as-is.
 
-6. **Report back**: what was created, and a short list of remaining `TODO`s the
+6. **Reconcile the context files with the actual docs layout**: the
+   "Project docs" list in AGENTS.md/CLAUDE.md must reference the files
+   that exist, by their real names and paths. If the project keeps an
+   equivalent under a different name (e.g. `docs/ops.md` instead of
+   `docs/runbook.md`), reference the project's name and note the mapping.
+   Remove references to doc types the project deliberately doesn't have.
+   If the context file was installed via `--merge`, edit only the harness
+   block's docs list, never the surrounding user content.
+
+7. **Report back**: what was created, and a short list of remaining `TODO`s the
    user should fill in later (e.g. via the `update-docs` skill or by hand).
 
 ## Notes
 
-- If `docs/` already has content, don't overwrite silently — show what's there
-  and ask whether to fill gaps, leave it, or restart that file.
+- Existing docs are the project's source of truth. Read every file in
+  `docs/` FIRST. For each file, decide WITH the user (never silently):
+  (a) keep as-is — the harness will reference it; (b) merge — add missing
+  sections from the template while preserving existing content; or
+  (c) replace — only on explicit user request, backing up the original
+  to `<name>.bak` first. Never write a docs file that already has
+  content without an explicit per-file decision.
+- Seed ADR numbering: check `docs/adr/` for existing numbered ADRs and
+  use the NEXT available number (e.g. if `0003-…` exists, the seed
+  becomes `0004-…`). Never hardcode `0001-` when the directory has ADRs.
 - This skill produces the project's first complete doc set; the `brainstorm` and
   `implement` skills keep it current afterward (see "Living docs" — they always ask
   before editing).
