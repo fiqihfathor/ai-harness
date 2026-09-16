@@ -4,7 +4,7 @@
 # Usage:
 #   ./harness-init.sh [TARGET_DIR] [--force] [--dry-run]
 #
-# Copies CLAUDE.md and .claude/ from this repo's template/ into TARGET_DIR
+# Copies CLAUDE.md, AGENTS.md, .claude/, and agents/ from this repo's template/ into TARGET_DIR
 # (default: current directory). Never overwrites existing files unless
 # --force is given (in which case the original is backed up to *.bak first).
 set -euo pipefail
@@ -16,7 +16,7 @@ usage() {
   cat <<'EOF'
 Usage: harness-init.sh [TARGET_DIR] [--force] [--dry-run]
 
-Copies the ai-harness template (CLAUDE.md, .claude/) into TARGET_DIR.
+Copies the ai-harness template (CLAUDE.md, AGENTS.md, .claude/, agents/) into TARGET_DIR.
 
   TARGET_DIR    Directory to initialize (default: current directory)
   --force       Overwrite existing files (backs up the original to *.bak first)
@@ -125,4 +125,11 @@ fi
 # Make sure any copied hook scripts stay executable.
 if [[ "$DRY_RUN" -eq 0 && -d "$TARGET_DIR/.claude/hooks" ]]; then
   chmod +x "$TARGET_DIR"/.claude/hooks/*.sh 2>/dev/null || true
+fi
+
+if [[ "$DRY_RUN" -eq 0 ]]; then
+  echo ""
+  echo "Harness layers initialized:"
+  echo "  - Claude Code users get .claude/ extras (hooks, subagents, slash commands)"
+  echo "  - Any-agent users point their agent at agents/skills/ (per-project) or copy to their global skills dir"
 fi
