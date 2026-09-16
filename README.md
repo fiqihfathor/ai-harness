@@ -42,6 +42,21 @@ loads automatically. Copy the template into any project repo to get:
 This is a per-project template, not a global `~/.claude` setup — it lives
 alongside your existing global config and doesn't depend on it.
 
+## Portable skills (any agent)
+
+The harness includes a portable agent skills layer in `agents/skills/` alongside the existing `.claude/` layout. Any agent supporting the standard agent-skills format (`SKILL.md` with YAML frontmatter `name` and `description`) can read and execute these skills — including Antigravity CLI, Codex, Cursor, OpenCode, and others.
+
+The 9 portable skills mirror the full harness workflow and capabilities:
+
+- **Workflow skills (6):** `brainstorm`, `plan`, `implement`, `review`, `diagnose`, `update-docs`
+- **Existing skills (3):** `setup`, `tdd`, `new-skill`
+
+### Installation & Usage
+
+- **Antigravity CLI:** Copy skill directories to `~/.gemini/antigravity-cli/skills/` (e.g. copy `template/agents/skills/tdd` to `~/.gemini/antigravity-cli/skills/harness-tdd`) for global use, or use `.agents/skills/` or `agents/skills/` in-project.
+- **Codex / Cursor / OpenCode / Other agents:** Point your agent at `agents/skills/` within the project, or copy skills to your agent's global skills directory (such as `~/.agents/skills/`).
+- **Claude Code:** Claude Code users still get the richer `.claude/` layer automatically (hooks, subagents, slash commands UX like `/brainstorm`, `/plan`, etc.) in addition to the portable skills and `AGENTS.md`.
+
 ## Usage
 
 From this repo:
@@ -131,6 +146,9 @@ ai-harness/
 ├── harness-init.sh
 └── template/
     ├── CLAUDE.md
+    ├── AGENTS.md
+    ├── agents/
+    │   └── skills/                  # portable skills (brainstorm, plan, implement, review, diagnose, update-docs, setup, tdd, new-skill)
     └── .claude/
         ├── settings.json
         ├── hooks/                  # see Hooks above
