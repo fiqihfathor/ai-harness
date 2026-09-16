@@ -1,0 +1,68 @@
+name: validate-skills
+
+on:
+  pull_request:
+    paths:
+      - "template/agents/skills/**"
+      - "template/.claude/skills/**"
+  push:
+    branches: [main]
+    paths:
+      - "template/agents/skills/**"
+      - "template/.claude/skills/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate SKILL.md frontmatter (portable layer)
+        run: |
+          set -eu
+          fail=0
+          for f in template/agents/skills/*/SKILL.md; do
+            [ -f "$f" ] || { echo "FAIL: $f missing"; fail=1; continue; }
+            # name: required, kebab-case
+            name=$(awk '/^name:/{print $2; exit}' "$f")
+            if [ -z "$name" ]; then
+              echo "FAIL: $f — missing 'name' in frontmatter"; fail=1
+            elif ! echo "$name" | grep -qE '^[a-z0-9]+(-[a-z0-9]+)*$'; then
+              echo "FAIL: $f — name '$name' not kebab-case"; fail=1
+            fi
+            # description: required, non-trivial
+            desc=$(awk '/^description:/{sub(/^description: */,""); print; exit}' "$f")
+            if [ -z "$desc" ] || [ "${#desc}" -lt 20 ]; then
+              echo "FAIL: $f — missing or too-short 'description'"; fail=1
+            fi
+            # no tabs in frontmatter block
+            if head -20 "$f" | grep -qP '\t'; then
+              echo "FAIL: $f — tab character in frontmatter"; fail=1
+            fi
+            echo "OK: $f"
+          done
+          exit $fail
+
+      - name: Validate SKILL.md frontmatter (Claude layer)
+        run: |
+          set -eu
+          fail=0
+          for f in template/.claude/skills/*/SKILL.md; do
+            [ -f "$f" ] || { echo "FAIL: $f missing"; fail=1; continue; }
+            grep -q "^description:" "$f" || { echo "FAIL: $f — no description"; fail=1; }
+            echo "OK: $f"
+          done
+          exit $fail
+
+      - name: Router completeness (ask-harness mentions every portable skill)
+        run: |
+          set -eu
+          router=template/agents/skills/ask-harness/SKILL.md
+          [ -f "$router" ] || { echo "ask-harness router missing"; exit 1; }
+          fail=0
+          for d in template/agents/skills/*/; do
+            s=$(basename "$d")
+            [ "$s" = "ask-harness" ] && continue
+            grep -q "\`$s\`" "$router" || { echo "FAIL: router does not mention '$s'"; fail=1; }
+          done
+          exit $fail
