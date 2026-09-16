@@ -37,9 +37,13 @@ Off the main line:
 - **docs drifted from code** → `update-docs` (reconcile docs/ with the
   current codebase). Also the closing step of any `implement` that
   changed documented behavior.
-- **project has no docs/ yet** → `setup` FIRST. It interviews the user
-  and generates overview, tech-stack, architecture, dev-guide, runbook,
-  constitution, and a seed ADR. Everything else assumes these exist.
+- **project has no AGENTS.md/docs at all** → `init` FIRST. It bootstraps
+  AGENTS.md (+CLAUDE.md on request) and the docs/ scaffold from
+  self-contained templates, then hands off to `setup`.
+- **project has no docs/ yet (AGENTS.md exists)** → `setup` FIRST. It
+  interviews the user and generates overview, tech-stack, architecture,
+  dev-guide, runbook, constitution, and a seed ADR. Everything else
+  assumes these exist.
 - **want to extend the harness itself** → `new-skill` (new command,
   skill, subagent, or hook, following harness conventions).
 - **constitution says TDD** → `implement` will invoke `tdd`

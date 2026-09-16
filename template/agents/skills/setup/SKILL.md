@@ -13,7 +13,7 @@ the `brainstorm` skill, which is task-scoped and run for every feature.
 
 ## Process
 
-1. **Locate the templates.** Read each skeleton in `.claude/templates/docs/`:
+1. **Locate the templates.** Read each skeleton in `agents/templates/docs/`:
    `constitution.md`, `project-overview.md`, `tech-stack.md`, `architecture.md`,
    `dev-guide.md`, `runbook.md`, `adr/README.md`,
    `adr/0001-record-architecture-decisions.md`.
