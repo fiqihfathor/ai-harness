@@ -123,13 +123,20 @@ if [[ "${#created[@]}" -eq 0 && "${#overwritten[@]}" -eq 0 && "$DRY_RUN" -eq 0 ]
 fi
 
 # Make sure any copied hook scripts stay executable.
-if [[ "$DRY_RUN" -eq 0 && -d "$TARGET_DIR/.claude/hooks" ]]; then
-  chmod +x "$TARGET_DIR"/.claude/hooks/*.sh 2>/dev/null || true
+if [[ "$DRY_RUN" -eq 0 ]]; then
+  if [[ -d "$TARGET_DIR/.claude/hooks" ]]; then
+    chmod +x "$TARGET_DIR"/.claude/hooks/*.sh 2>/dev/null || true
+  fi
+  if [[ -d "$TARGET_DIR/hooks" ]]; then
+    chmod +x "$TARGET_DIR"/hooks/*.sh 2>/dev/null || true
+    chmod +x "$TARGET_DIR"/hooks/*/*.sh 2>/dev/null || true
+  fi
 fi
 
 if [[ "$DRY_RUN" -eq 0 ]]; then
   echo ""
   echo "Harness layers initialized:"
-  echo "  - Claude Code users get .claude/ extras (hooks, subagents, slash commands)"
+  echo "  - Portable git hooks: run 'hooks/install.sh' to add git-level enforcement for ANY agent"
+  echo "  - Claude Code users additionally get .claude/hooks automatically (hooks, subagents, slash commands)"
   echo "  - Any-agent users point their agent at agents/skills/ (per-project) or copy to their global skills dir"
 fi
