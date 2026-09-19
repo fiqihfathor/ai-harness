@@ -6,16 +6,17 @@
 > (which just lists what's installed) and from `docs/constitution.md`
 > (which is non-negotiable project rules, not technology-specific advice).
 >
-> Generated once by `/setup`, sectioned per technology the project actually
-> uses — don't add a section for tech that isn't present. `/update-docs` adds
-> or removes sections when `tech-stack.md` changes (structural refresh only);
-> it does not silently re-research existing section content. Ask explicitly
-> (e.g. "refresh the <X> section of dev-guide.md") when you want that.
+> Generated once by the `setup` skill, sectioned per technology the project
+> actually uses — don't add a section for tech that isn't present. The
+> `update-docs` skill adds or removes sections when `tech-stack.md` changes
+> (structural refresh only); it does not silently re-research existing section
+> content. Ask explicitly (e.g. "refresh the <X> section of dev-guide.md")
+> when you want that.
 
 <!--
 Repeat this section shape once per technology/domain actually used by the
 project (e.g. API framework, RAG pipeline, orchestration framework, frontend
-framework). Delete this comment and the example section below once real
+framework). Delete this comment and the template section below once real
 sections are filled in.
 
 ## <Technology name>
@@ -35,7 +36,7 @@ sections are filled in.
 <known pitfalls / mistakes to avoid>
 -->
 
-## Example: API (FastAPI)
+## <Technology name> (template — replace)
 
 ### Conventions
 

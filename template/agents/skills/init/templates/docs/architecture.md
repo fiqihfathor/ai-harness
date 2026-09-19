@@ -50,3 +50,31 @@ TODO (add only if a container needs internal breakdown)
      constraints, anything that cuts across containers. -->
 
 - TODO
+
+## Quality requirements
+
+<!-- arc42 section 10. The qualities this system must have, in priority order,
+     each with a concrete scenario that makes it testable. Top 3-5 maximum —
+     a quality goal nobody measures is a wish, not a requirement. Example:
+
+     | Quality | Scenario (testable) | Priority |
+     |---|---|---|
+     | Latency | p99 API read < 200ms at 100 rps | 1 |
+     | Durability | No acknowledged write lost across a single-node failure | 2 | -->
+
+- TODO
+
+## Risks & technical debt
+
+<!-- arc42 section 11. Known problems, risks, and deliberate shortcuts — with
+     their mitigation or payoff date. This is the honest section: an empty list
+     here usually means nobody wrote it down, not that nothing exists. Review
+     in `update-docs` runs; retire entries when resolved or consciously
+     accepted. Example:
+
+     | Risk / debt | Impact | Mitigation / payoff |
+     |---|---|---|
+     | No retry queue on email provider | transient email loss | add queue by Q3 |
+     | Legacy parser lacks tests | regressions hard to catch | characterization tests before any change | -->
+
+- TODO
