@@ -1,41 +1,47 @@
 # Tech Stack
 
-> What the project is built with, and why. This is descriptive (facts about
+> What the project is built with, and **why**. This is descriptive (facts about
 > tools), not normative — for rules about how to build, see `constitution.md`.
+> The "why" column is the point: when someone proposes swapping a tool in six
+> months, the original reasoning is what makes that a discussion instead of a
+> coin flip.
 
 ## Languages & runtimes
 
-<!-- e.g. Go 1.22, Node 20, Python 3.12 -->
+<!-- e.g. Go 1.22 — chosen for single-binary deploys. -->
 
-- TODO
+| What | Version | Why this / alternatives rejected |
+|---|---|---|
+| TODO | TODO | TODO |
 
 ## Frameworks & key libraries
 
-<!-- e.g. Gin, FastAPI, React -->
+<!-- e.g. FastAPI — async + typed; Flask rejected (no native async). -->
 
-- TODO
+| What | Version | Why this / alternatives rejected |
+|---|---|---|
+| TODO | TODO | TODO |
 
 ## Data stores
 
-<!-- e.g. PostgreSQL 16 (primary), Redis (cache/queues) -->
+<!-- e.g. PostgreSQL 16 (primary) — relational + JSONB; Mongo rejected (team expertise). -->
 
-- TODO
+| What | Role | Why this / alternatives rejected |
+|---|---|---|
+| TODO | TODO | TODO |
 
 ## External services
 
-<!-- e.g. Auth0 (auth), Stripe (payments), SendGrid (email) -->
+<!-- e.g. Stripe (payments), Resend (email) — include the failure-mode note if
+     the service is on the critical path. -->
 
-- TODO
+| What | Role | Why this / alternatives rejected |
+|---|---|---|
+| TODO | TODO | TODO |
 
-## Infrastructure & deployment
+## Deprecation watch
 
-<!-- e.g. GKE via Helm, CI on GitHub Actions, Terraform for infra -->
+<!-- Tools we're actively moving away from, with the replacement and rough
+     timeline. Empty means nothing is being phased out. -->
 
-- TODO
-
-## Why these choices
-
-<!-- Brief rationale for non-obvious picks. Significant decisions with real
-     trade-offs should also get an ADR in docs/adr/. -->
-
-- TODO
+- (none)

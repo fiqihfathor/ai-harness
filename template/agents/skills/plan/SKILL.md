@@ -20,7 +20,12 @@ Turn the approved design into an implementation plan: the user's request/target,
 3. For each step, define a **verifiable checkpoint**: how to know it's done
    correctly (a test, a command, an observable behavior) — not just "looks
    right."
-4. **Flag independence.** Mark which steps share no state or files with each
+4. **Mark blast radius.** Flag any step that is hard to reverse or wide in
+   impact — migrations, breaking API/ABI changes, deletions, auth/permission
+   changes, mass renames. For each flagged step, state the rollback or
+   mitigation (backup first, feature flag, versioned migration, dry-run).
+   Unflagged steps should be safely revertible.
+5. **Flag independence.** Mark which steps share no state or files with each
    other (true independence: different modules/files, no shared types, no
    ordering requirement) — this is metadata only, not an instruction to
    actually run them concurrently. Be conservative: if there's any doubt
@@ -42,7 +47,7 @@ Turn the approved design into an implementation plan: the user's request/target,
 
    ## Steps
 
-   1. <step> — checkpoint: <how to verify> — independent: yes/no
+   1. <step> — checkpoint: <how to verify> — independent: yes/no — blast radius: <safe|flagged + rollback>
    2. ...
 
    ## Parallelizable steps

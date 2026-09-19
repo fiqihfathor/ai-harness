@@ -10,6 +10,18 @@
 - **What it does:** TODO (one line)
 - **Criticality:** TODO (e.g. tier-1, customer-facing)
 
+## Severity levels
+
+<!-- Shared scale so nobody argues about "how bad" mid-incident. Adapt the
+     examples/thresholds to this service; delete rows that don't apply. -->
+
+| Level | Definition | Example | Ack / resolve target |
+|---|---|---|---|
+| SEV0 | Complete outage, all users, revenue impact | TODO | ack 5 min, resolve/escalate 15 min |
+| SEV1 | Major feature broken, no workaround, majority of users | TODO | ack 10 min, resolve/escalate 30 min |
+| SEV2 | Partial degradation, workaround exists | TODO | ack 30 min, resolve 2 h |
+| SEV3 | Minor/cosmetic, non-critical | TODO | next business day |
+
 ## How to run it locally
 
 <!-- Commands to build, run, and test locally. -->
@@ -20,7 +32,7 @@ TODO
 
 ## Triggers / symptoms
 
-<!-- What an alert or symptom looks like, and what it usually means. -->
+<!-- What an alert or symptom looks like, what it usually means, and how bad it is. -->
 
 | Symptom / alert | Likely cause | Severity |
 |---|---|---|
@@ -48,10 +60,10 @@ TODO (diagnostic commands)
 
 ## Recovery steps
 
-<!-- Step-by-step remediation for the most common failure modes. -->
+<!-- Step-by-step remediation for the most common failure modes. One numbered
+     list per failure mode, worst-first. -->
 
 1. TODO
-2. TODO
 
 ## Verification checklist
 
@@ -65,4 +77,5 @@ TODO (diagnostic commands)
 - Record timestamps and actions taken during the incident.
 - File a follow-up to update this runbook if it was inaccurate or incomplete.
 - Consider whether the incident warrants a new ADR (e.g. if it led to an
-  architecture change).
+  architecture change) or a new entry in architecture.md's "Risks & technical
+  debt" section.

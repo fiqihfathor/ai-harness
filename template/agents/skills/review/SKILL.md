@@ -11,6 +11,9 @@ Review the staged and unstaged changes (`git diff HEAD`). Report:
 
 - Correctness bugs
 - Security issues
+- **Constitution compliance:** check the diff against `docs/constitution.md`
+  (if present) — a change that is bug-free but breaks a stated project rule
+  is a finding, not a style nit. Conflicts with an ADR count too.
 - Simplification / efficiency opportunities
 
 Cite `file:line`. Don't restate the code back to the user.

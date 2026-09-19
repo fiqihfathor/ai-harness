@@ -51,7 +51,10 @@ the `brainstorm` skill, which is task-scoped and run for every feature.
    `TODO` is a correct, honest output; an invented fact is not.
 
 4. **Write the filled docs to the project's `docs/` directory** (create it if
-   missing), mirroring the templates' structure:
+   missing), mirroring the templates' structure. For `docs/tech-stack.md`,
+   fill the "Why this / alternatives rejected" column — a stack entry without
+   its reasoning is a fact nobody can challenge or learn from; if the reason
+   is unknown, say "reason lost" rather than inventing one.
    - `docs/constitution.md`
    - `docs/project-overview.md`
    - `docs/tech-stack.md`
