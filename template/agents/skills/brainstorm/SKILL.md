@@ -5,7 +5,7 @@ description: Use when exploring intent and design before implementing, checking 
 
 # Brainstorm design
 
-*Claude Code users: this is /brainstorm.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Help turn this idea into an approved design through dialogue: the user's request/target, if given in the invocation.
 
@@ -23,7 +23,10 @@ Help turn this idea into an approved design through dialogue: the user's request
    quietly ignore the doc. Ask the user how they want to resolve it (adjust
    the design, or knowingly supersede the existing decision).
 5. **Present the design** in sections scaled to complexity; get approval after
-   each section.
+   each section. **Feedback loop:** after each section, reflect the user's
+   reaction back into the design before moving on — if they pushed back on a
+   trade-off, the next section must incorporate it, not repeat the same
+   assumption. Design approval is a conversation, not a formality.
 6. **Architecturally significant decision?** Draft an ADR only when **all
    three** are true — don't draft one just because something touches
    architecture:
@@ -95,7 +98,7 @@ written (with confirmation) or explicitly deferred.
 
 ## Principles
 
-Apply the working principles from `AGENTS.md` (or `CLAUDE.md`): think before coding, simplicity
+Apply the working principles from the project's context file (`AGENTS.md` or equivalent): think before coding, simplicity
 first, surgical changes, goal-driven execution. One question at a time. Don't
 invent project facts — if a doc doesn't exist yet, say so and proceed on what
 the user tells you directly.

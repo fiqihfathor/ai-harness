@@ -5,7 +5,7 @@ description: Use when turning an approved design into a step-by-step implementat
 
 # Plan implementation
 
-*Claude Code users: this is /plan.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Turn the approved design into an implementation plan: the user's request/target, if given in the invocation.
 

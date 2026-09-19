@@ -5,7 +5,7 @@ description: Use when following a structured debugging loop for an existing bug 
 
 # Diagnose bug
 
-*Claude Code users: this is /diagnose.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Debug systematically: the user's request/target, if given in the invocation.
 
@@ -36,6 +36,16 @@ Debug systematically: the user's request/target, if given in the invocation.
    Briefly note what would have caught this earlier (a missing test, a gap in
    `docs/runbook.md`, a constitution rule) — if it points to a doc gap, that's
    a candidate for the `update-docs` skill or a new ADR, not silent forgetting.
+
+## Feedback loop
+
+Every hypothesis killed in step 3-4 feeds the next iteration: state what the
+dead hypothesis RULED OUT, not just that it failed ("not the connection pool
+— pool idle during repro") — so the investigation narrows instead of
+wandering. If three hypotheses die in a row without narrowing, stop and
+report: the mental model of the system is wrong somewhere, and a wrong model
+generates wrong hypotheses forever. Ask the user what you might be missing
+before burning more cycles.
 
 ## Notes
 

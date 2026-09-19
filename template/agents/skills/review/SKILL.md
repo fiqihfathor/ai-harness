@@ -5,7 +5,7 @@ description: Use when reviewing the current git diff for bugs, security issues, 
 
 # Review diff
 
-*Claude Code users: this is /review.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Review the staged and unstaged changes (`git diff HEAD`). Report:
 
@@ -25,6 +25,13 @@ diff — a blanket pass is only valid if you looked. If you propose a fix,
 don't claim it's correct without verifying it (run it, or explain exactly why
 you're confident without running it). Never assert a bug is "fixed" because a
 fix was applied — only because it was checked.
+
+## Feedback loop
+
+For findings you report as CRITICAL or security-relevant: after the user (or
+author) applies a fix, re-review the fixed diff before it merges — the fix is
+not confirmed resolved until the re-review passes. A finding that was fixed
+and re-broken by its own fix is a real pattern; closing the loop catches it.
 
 ## Output style
 

@@ -5,7 +5,7 @@ description: Use when executing an approved plan step by step, then checking doc
 
 # Implement plan
 
-*Claude Code users: this is /implement.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Execute the approved plan: the user's request/target, if given in the invocation.
 
@@ -31,7 +31,7 @@ Execute the approved plan: the user's request/target, if given in the invocation
    the test suite, delegate to your harness's subagent mechanism if available (or
    run tests directly) to keep verbose test output manageable; treat its pass/fail report as the verification.
 4. Keep changes surgical: modify only what's necessary, match existing style,
-   don't refactor unrelated code (see `AGENTS.md` / `CLAUDE.md` principles).
+   don't refactor unrelated code (see the context file's principles — `AGENTS.md` or equivalent).
 5. If something doesn't match expectations mid-step, stop and report it
    rather than improvising past it silently.
 6. **Doc-impact check (end of implementation):** review what changed. If it
@@ -42,7 +42,13 @@ Execute the approved plan: the user's request/target, if given in the invocation
    don't rewrite other sections' content). If a change conflicts with
    `docs/constitution.md` or an existing ADR, surface that as a conflict
    requiring a decision (typically a new superseding ADR), not a routine edit.
-7. Once the plan is fully done and verified, update the plan file's
+7. **Feedback loop (self-check before reporting done).** Reread the plan's
+   checkpoints against what actually ran this session. For each step, state
+   the evidence in one line (command + result). Any step whose evidence is
+   missing or paraphrased-from-expectation is NOT done — either run it now or
+   report it explicitly as unfinished. This closes the loop between "the plan
+   said" and "the run showed": they must agree before you claim completion.
+8. Once the plan is fully done and verified, update the plan file's
    **Status** to `Done` and the matching spec's **Status** to `Implemented` —
    otherwise they'd read as perpetually pending to anyone looking later.
 

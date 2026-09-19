@@ -25,7 +25,7 @@
 <!-- - All public functions are documented. -->
 <!-- - All feature/bugfix work follows TDD (write a failing test before -->
 <!--   implementation code) -- see the `tdd` skill for the red-green-refactor -->
-<!--   loop. /implement checks this rule before applying it; remove this line -->
+<!--   loop. The `implement` skill checks this rule before applying it; remove this line -->
 <!--   entirely if this project does not follow TDD. -->
 
 - TODO
