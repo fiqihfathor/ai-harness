@@ -35,6 +35,13 @@ read-only or needs write/Bash access.
 ## Step 3 — generate the file, applying harness conventions where relevant
 
 - **Frontmatter:** skills need `name` (kebab-case) and `description`; subagents need `name`, `description`, `tools`, optionally `model`; hooks are plain scripts wired into config.
+- **Skill folder anatomy** (when the skill needs more than instructions):
+  `my-skill/SKILL.md` (required) plus optional `scripts/` (executable helpers —
+  treat as black boxes, document a `--help`/usage header, keep deterministic
+  and side-effect-light), `examples/` (reference implementations), and
+  `resources/` (templates, schemas, data files the skill copies from —
+  e.g. the `init` skill keeps its bootstrap templates there). Keep SKILL.md
+  the entry point; reference the other folders by relative path.
 - **If it writes code or runs commands and claims "done"/"fixed"/"passing":**
   add a verification gate like the `implement` skill's — no claiming success without
   having just run the evidence for it.
