@@ -49,6 +49,10 @@ Off the main line:
 - **constitution says TDD** → `implement` will invoke `tdd`
   automatically; users can also invoke `tdd` directly for out-of-band
   work.
+- **task is simple (scope fits 1-2 sentences, one code area, no design
+  choice, small blast radius)** → go straight to `implement` with the
+  task description — skip `brainstorm`/`plan`. See "Task sizing" in
+  AGENTS.md for the full rule. The verification gate still applies.
 - **changes are on the diff, pre-merge** → `review` the current diff
   before finishing any feature line.
 

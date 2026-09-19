@@ -12,8 +12,14 @@ Execute the approved plan: the user's request/target, if given in the invocation
 ## Process
 
 1. If no plan is in context, check `docs/plans/` for a matching file before
-   asking — it may have survived from an earlier session. If none exists, run
-   the `plan` skill first; don't implement an unplanned change.
+   asking — it may have survived from an earlier session. If none exists,
+   run the `plan` skill first; don't implement an unplanned change.
+   **Exception — simple tasks:** when the task sizing rule (see AGENTS.md
+   "Task sizing") says skip upstream — scope clear in 1-2 sentences, one
+   area, no design choice, small blast radius — accept the task description
+   directly and proceed without demanding a plan file. Everything else in
+   this skill (verification gate, doc-impact check, surgical changes)
+   applies unchanged.
 2. **Check for TDD before starting.** Read `docs/constitution.md`. If it
    specifies TDD (or the user has otherwise asked for it this session),
    invoke the `tdd` skill and follow its red-green-refactor loop for each
