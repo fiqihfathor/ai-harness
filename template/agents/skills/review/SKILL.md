@@ -26,6 +26,13 @@ don't claim it's correct without verifying it (run it, or explain exactly why
 you're confident without running it). Never assert a bug is "fixed" because a
 fix was applied — only because it was checked.
 
+## Feedback loop
+
+For findings you report as CRITICAL or security-relevant: after the user (or
+author) applies a fix, re-review the fixed diff before it merges — the fix is
+not confirmed resolved until the re-review passes. A finding that was fixed
+and re-broken by its own fix is a real pattern; closing the loop catches it.
+
 ## Output style
 
 Use high-signal terse narration: findings only, no preamble, no restating

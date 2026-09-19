@@ -55,7 +55,7 @@ the harness skills installed, score the transcript against Must/Must-Not.
 Scoring is judgment-based by design — the behaviors are observable
 (wrote a file, asked before writing, cited file:line), not vibes.
 
-## Case inventory
+## Case inventory (11 cases — full skill coverage)
 
 | Case | Skill | What it guards |
 |------|-------|----------------|
@@ -69,4 +69,11 @@ Scoring is judgment-based by design — the behaviors are observable
 | update-docs-ask-first | update-docs | proposed diffs shown, nothing written without confirm |
 | init-idempotent | init | second run = no-op; scripts used, not hand-edited |
 | setup-existing-docs | setup | existing docs = source of truth; no silent overwrite |
+| implement-tdd-conditional | implement | TDD invoked only when constitution says so |
+| review-constitution | review | diff breaking constitution is a finding |
+| update-docs-ask-first | update-docs | proposed diffs shown, nothing written without confirm |
+| init-idempotent | init | second run = no-op; scripts used, not hand-edited |
+| setup-existing-docs | setup | existing docs = source of truth; no silent overwrite |
+| brainstorm-spec-quality | brainstorm | spec file written, self-reviewed, file confirmation asked |
+| tdd-red-first | tdd | failing test before implementation, red output shown |
 | ask-harness-routing | ask-harness | correct skill named for the situation |

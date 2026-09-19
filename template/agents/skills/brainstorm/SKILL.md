@@ -23,7 +23,10 @@ Help turn this idea into an approved design through dialogue: the user's request
    quietly ignore the doc. Ask the user how they want to resolve it (adjust
    the design, or knowingly supersede the existing decision).
 5. **Present the design** in sections scaled to complexity; get approval after
-   each section.
+   each section. **Feedback loop:** after each section, reflect the user's
+   reaction back into the design before moving on — if they pushed back on a
+   trade-off, the next section must incorporate it, not repeat the same
+   assumption. Design approval is a conversation, not a formality.
 6. **Architecturally significant decision?** Draft an ADR only when **all
    three** are true — don't draft one just because something touches
    architecture:

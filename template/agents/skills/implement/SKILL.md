@@ -42,7 +42,13 @@ Execute the approved plan: the user's request/target, if given in the invocation
    don't rewrite other sections' content). If a change conflicts with
    `docs/constitution.md` or an existing ADR, surface that as a conflict
    requiring a decision (typically a new superseding ADR), not a routine edit.
-7. Once the plan is fully done and verified, update the plan file's
+7. **Feedback loop (self-check before reporting done).** Reread the plan's
+   checkpoints against what actually ran this session. For each step, state
+   the evidence in one line (command + result). Any step whose evidence is
+   missing or paraphrased-from-expectation is NOT done — either run it now or
+   report it explicitly as unfinished. This closes the loop between "the plan
+   said" and "the run showed": they must agree before you claim completion.
+8. Once the plan is fully done and verified, update the plan file's
    **Status** to `Done` and the matching spec's **Status** to `Implemented` —
    otherwise they'd read as perpetually pending to anyone looking later.
 
