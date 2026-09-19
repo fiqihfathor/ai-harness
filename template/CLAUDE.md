@@ -69,3 +69,8 @@ These apply to all work in this project, not just a single task.
 - `/setup` — (re-)run the project docs interview
 - `/new-skill` — add a new command/skill/agent/hook consistent with this
   harness's conventions
+
+Simple tasks (scope in 1-2 sentences, one code area, no design choice,
+small blast radius) skip `/brainstorm` + `/plan` and go straight to
+`/implement` — see "Task sizing" in AGENTS.md. The verification gate
+always applies.

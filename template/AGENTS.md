@@ -74,6 +74,32 @@ Skills to run in order for features/changes:
 For bugs:
 - `diagnose` — structured debugging loop for an existing bug
 
+### Task sizing — when to skip upstream steps
+
+The full flow exists for work that needs alignment (design decisions,
+trade-offs, blast radius). For simple tasks it is overhead that violates
+"Simplicity first." Route by size:
+
+**Go straight to `implement` (skip brainstorm + plan) when ALL hold:**
+- scope is already clear — the task fits in 1–2 sentences, no interview needed
+- touches one area of the code, no cross-module spread
+- no meaningful design choice or trade-off
+- small blast radius (not a migration, breaking API, deletion, auth change)
+
+For such tasks, `implement` accepts the task description directly in place
+of a plan file; its verification gate still applies unchanged — evidence
+run before any "done" claim, always.
+
+**Still run the full flow when ANY hold:**
+- requirements are vague, or you find yourself guessing
+- there are ≥2 valid approaches with different consequences
+- it touches `docs/constitution.md`, an ADR, or architecture
+- multi-step dependencies or large blast radius
+
+Borderline (small feature with one design choice)? Ask the question
+directly in conversation, then proceed — artifacts are for work that must
+survive across sessions, not for tasks finished in one sitting.
+
 On demand:
 - `update-docs` — reconcile `docs/` with the current codebase on demand
 - `setup` — (re-)run the project docs interview

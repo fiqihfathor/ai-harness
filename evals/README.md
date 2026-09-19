@@ -76,4 +76,5 @@ Scoring is judgment-based by design — the behaviors are observable
 | setup-existing-docs | setup | existing docs = source of truth; no silent overwrite |
 | brainstorm-spec-quality | brainstorm | spec file written, self-reviewed, file confirmation asked |
 | tdd-red-first | tdd | failing test before implementation, red output shown |
+| implement-simple-task | implement | simple task skips plan demand, gate stays |
 | ask-harness-routing | ask-harness | correct skill named for the situation |
