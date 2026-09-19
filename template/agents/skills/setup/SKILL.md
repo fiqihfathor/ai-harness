@@ -90,8 +90,10 @@ the `brainstorm` skill, which is task-scoped and run for every feature.
   to `<name>.bak` first. Never write a docs file that already has
   content without an explicit per-file decision.
 - Seed ADR numbering: check `docs/adr/` for existing numbered ADRs and
-  use the NEXT available number (e.g. if `0003-…` exists, the seed
-  becomes `0004-…`). Never hardcode `0001-` when the directory has ADRs.
+  use the NEXT available number, at the repo's existing digit width
+  (3-digit `001-` and 4-digit `0001-` conventions both exist — follow the
+  repo, e.g. `0003-…` present → seed becomes `0004-…`; if the `init`
+  skill's scripts are available, `next-adr-number.sh` handles this).
 - This skill produces the project's first complete doc set; the `brainstorm` and
   `implement` skills keep it current afterward (see "Living docs" — they always ask
   before editing).
