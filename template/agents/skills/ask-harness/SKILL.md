@@ -55,6 +55,11 @@ Off the main line:
   AGENTS.md for the full rule. The verification gate still applies.
 - **changes are on the diff, pre-merge** → `review` the current diff
   before finishing any feature line.
+- **uncommitted changes need structure** → `commit` (recommend atomic,
+  ordered add+commit commands — output only, no execution).
+- **about to open a PR, need title/description** → `pr-draft`
+  (recommend PR text; template adapts to target branch — feature-focus
+  for main/master, summary+module-changes for dev/uat).
 
 ## Decision rules
 
