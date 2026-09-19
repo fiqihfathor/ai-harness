@@ -5,7 +5,7 @@ description: Use when exploring intent and design before implementing, checking 
 
 # Brainstorm design
 
-*Claude Code users: this is /brainstorm.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Help turn this idea into an approved design through dialogue: the user's request/target, if given in the invocation.
 
@@ -95,7 +95,7 @@ written (with confirmation) or explicitly deferred.
 
 ## Principles
 
-Apply the working principles from `AGENTS.md` (or `CLAUDE.md`): think before coding, simplicity
+Apply the working principles from the project's context file (`AGENTS.md` or equivalent): think before coding, simplicity
 first, surgical changes, goal-driven execution. One question at a time. Don't
 invent project facts — if a doc doesn't exist yet, say so and proceed on what
 the user tells you directly.

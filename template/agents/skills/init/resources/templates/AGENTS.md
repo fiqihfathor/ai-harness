@@ -37,8 +37,8 @@ something the `update-docs` skill keeps current.
 
 ## Harness layout
 
-- `.claude/` — Claude Code extras (hooks, subagents, slash UX)
-- `agents/skills/` — portable skills for any agent (Antigravity CLI, Codex, Cursor, OpenCode, etc.)
+- `agents/skills/` — portable skills for any agent that reads the agent-skills format
+- agent-specific layers (e.g. `.claude/`) — present only if installed; their extras (engine hooks, slash UX, subagents) layer on top
 - `agents/templates/docs/` — doc skeletons used by the `setup` skill (kept next to the portable skills so manual/global installs can reach them)
 - `hooks/` — portable git hooks: mechanical enforcement (secret scan, destructive-bash guard, conventional commits, ADR nudge) that runs regardless of which agent is driving
 - `docs/` — generated project standing record and per-task specs/plans
@@ -79,4 +79,4 @@ On demand:
 - `setup` — (re-)run the project docs interview
 - `new-skill` — add a new skill/command/agent/hook consistent with this harness's conventions
 
-*(Note: On Claude Code, these workflow steps correspond to the `/brainstorm`, `/plan`, `/implement`, `/review`, `/diagnose`, `/update-docs`, `/setup`, and `/new-skill` slash commands).*
+*(Note: on harnesses with slash-command UX, each skill above may also be invocable as a command of the same name.)*

@@ -5,7 +5,7 @@ description: Use when reviewing the current git diff for bugs, security issues, 
 
 # Review diff
 
-*Claude Code users: this is /review.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Review the staged and unstaged changes (`git diff HEAD`). Report:
 

@@ -5,7 +5,7 @@ description: Red-green-refactor test-driven development loop. Use when implement
 
 # TDD: red-green-refactor
 
-*Claude Code users: this is /tdd.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 A disciplined loop for writing code with tests driving the design, not
 following it as an afterthought.

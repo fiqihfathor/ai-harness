@@ -61,7 +61,7 @@ Off the main line:
 3. Specs and plans survive in `docs/specs/` and `docs/plans/` across
    sessions — if the user mentions prior work, check those folders
    before routing to `brainstorm` again.
-4. On Claude Code, the same flows exist as slash commands
+4. On harnesses with slash-command UX, the same flows may exist as commands
    (/brainstorm, /plan, /implement, /review, /diagnose, /update-docs,
    /setup); prefer whichever invocation style the user used.
 
@@ -72,5 +72,5 @@ Off the main line:
   saying what to run first.
 - Then wait for a go-ahead.
 
-Claude Code users: this router corresponds to asking the agent directly;
+On harnesses without slash commands, this router corresponds to asking the agent directly;
 the slash commands remain available.

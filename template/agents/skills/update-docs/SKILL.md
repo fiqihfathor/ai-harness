@@ -5,7 +5,7 @@ description: Use when reconciling docs/ with the current state of the codebase
 
 # Update docs
 
-*Claude Code users: this is /update-docs.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Reconcile the project docs with reality.
 

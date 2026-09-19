@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # append-context-block.sh — append the harness context block to an existing
-# CLAUDE.md / AGENTS.md, idempotently.
+# context file (AGENTS.md, CLAUDE.md, or similar), idempotently.
 #
 # Usage: append-context-block.sh <TARGET_FILE> <BLOCK_SOURCE_FILE> [MARKER_VERSION]
 #   TARGET_FILE     existing context file to append into (not modified if

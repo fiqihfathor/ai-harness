@@ -5,7 +5,7 @@ description: Use when executing an approved plan step by step, then checking doc
 
 # Implement plan
 
-*Claude Code users: this is /implement.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Execute the approved plan: the user's request/target, if given in the invocation.
 
@@ -31,7 +31,7 @@ Execute the approved plan: the user's request/target, if given in the invocation
    the test suite, delegate to your harness's subagent mechanism if available (or
    run tests directly) to keep verbose test output manageable; treat its pass/fail report as the verification.
 4. Keep changes surgical: modify only what's necessary, match existing style,
-   don't refactor unrelated code (see `AGENTS.md` / `CLAUDE.md` principles).
+   don't refactor unrelated code (see the context file's principles — `AGENTS.md` or equivalent).
 5. If something doesn't match expectations mid-step, stop and report it
    rather than improvising past it silently.
 6. **Doc-impact check (end of implementation):** review what changed. If it

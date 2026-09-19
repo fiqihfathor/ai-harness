@@ -5,7 +5,7 @@ description: Use when following a structured debugging loop for an existing bug 
 
 # Diagnose bug
 
-*Claude Code users: this is /diagnose.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 Debug systematically: the user's request/target, if given in the invocation.
 

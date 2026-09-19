@@ -1,11 +1,11 @@
 ---
 name: setup
-description: Interview the user about this project and generate project-specific docs (overview, tech stack, architecture, runbook, constitution, ADR) plus fill AGENTS.md / CLAUDE.md placeholders. Use once when adopting the harness in a project, or to refresh docs later.
+description: Interview the user about this project and generate project-specific docs (overview, tech stack, architecture, runbook, constitution, ADR) plus fill the context file's placeholders. Use once when adopting the harness in a project, or to refresh docs later.
 ---
 
 # Project setup interview
 
-*Claude Code users: this is /setup.*
+*On harnesses that expose skills as slash commands, this skill maps to one — invoke it by whatever name your harness uses.*
 
 This skill bootstraps the project's standing documentation. It is project-scoped
 and one-shot (run once per project, or rarely to refresh) — distinct from
@@ -65,10 +65,10 @@ the `brainstorm` skill, which is task-scoped and run for every feature.
    - `docs/adr/README.md`
    - `docs/adr/0001-record-architecture-decisions.md`
 
-5. **Fill `AGENTS.md` (and `CLAUDE.md` if present) placeholders** (project name, overview, build/test/lint/run
+5. **Fill the context file's placeholders** (`AGENTS.md`, plus other context files present in the repo, e.g. `CLAUDE.md`) (project name, overview, build/test/lint/run
    commands) based on the interview. Leave the working principles section as-is.
 
-6. **Reconcile the context files with the actual docs layout**: the
+6. **Reconcile the context file(s) with the actual docs layout**: the
    "Project docs" list in AGENTS.md/CLAUDE.md must reference the files
    that exist, by their real names and paths. If the project keeps an
    equivalent under a different name (e.g. `docs/ops.md` instead of

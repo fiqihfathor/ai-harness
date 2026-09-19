@@ -1,6 +1,6 @@
 ---
 name: init
-description: Bootstrap the ai-harness into a project that doesn't have it yet — creates AGENTS.md (and CLAUDE.md on request), the docs/ scaffold, and offers git hooks. Use when the user says "init harness", "set up AGENTS.md", "initialize this project", or when harness skills are installed globally but the project has no AGENTS.md/docs.
+description: Bootstrap the ai-harness into a project that doesn't have it yet — creates the agent context file (AGENTS.md, plus others like CLAUDE.md on request), the docs/ scaffold, and offers git hooks. Use when the user says "init harness", "set up AGENTS.md", "initialize this project", or when harness skills are installed globally but the project has no AGENTS.md/docs.
 ---
 
 # init: bootstrap the harness into a project
@@ -17,7 +17,8 @@ source. `scripts/append-context-block.sh` handles idempotent marker appending;
 ## Process
 
 1. **Survey the project first.** Check for: existing `AGENTS.md`,
-   `CLAUDE.md`, `docs/` content, git repo, README, build files. Existing
+   other context files (e.g. `CLAUDE.md`), `docs/` content, git repo,
+   README, build files. Existing
    files are the project's source of truth — you are here to ADD, never
    to replace.
 
@@ -37,8 +38,8 @@ source. `scripts/append-context-block.sh` handles idempotent marker appending;
         AGENTS.md <skill-dir>/resources/templates/AGENTS.md
      ```
      Exit message "already-merged" = done, skip silently.
-   - Same logic for `CLAUDE.md` (only if Claude Code is one of the
-     project's agents, or on explicit request).
+   - Same logic for other context files the project uses (e.g. `CLAUDE.md`),
+     only if that agent context is wanted, or on explicit request.
 
 4. **Docs scaffold**: create `docs/` entries ONLY for files that don't
    exist, copying from `resources/templates/docs/`. For every file that
