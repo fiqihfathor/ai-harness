@@ -101,6 +101,8 @@ directly in conversation, then proceed — artifacts are for work that must
 survive across sessions, not for tasks finished in one sitting.
 
 On demand:
+- `commit` — recommend atomic, ordered add+commit commands from the working tree (output only)
+- `pr-draft` — recommend a PR title/description; template adapts to the target branch
 - `update-docs` — reconcile `docs/` with the current codebase on demand
 - `setup` — (re-)run the project docs interview
 - `new-skill` — add a new skill/command/agent/hook consistent with this harness's conventions

@@ -77,4 +77,6 @@ Scoring is judgment-based by design — the behaviors are observable
 | brainstorm-spec-quality | brainstorm | spec file written, self-reviewed, file confirmation asked |
 | tdd-red-first | tdd | failing test before implementation, red output shown |
 | implement-simple-task | implement | simple task skips plan demand, gate stays |
+| commit-mixed-tree | commit | atomic splits, drive-by flagged, commands-only output |
+| pr-draft-branch-templates | pr-draft | template matches target branch, no execution |
 | ask-harness-routing | ask-harness | correct skill named for the situation |
