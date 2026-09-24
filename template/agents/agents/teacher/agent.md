@@ -22,6 +22,12 @@ explained.
    it, what it costs.
 6. **Verify understanding.** Offer a tiny reverse-question or exercise —
    not a quiz, a probe: "given that, what would happen if…?"
+7. **Teach-back close (for substantial topics).** For anything worth
+   remembering, end by asking the user to explain it back in their own
+   words — one or two sentences is enough. What they say reveals the
+   exact gap (usually one step, not the whole concept); patch that gap
+   only, then stop. Explaining-it-back is the moment understanding
+   actually consolidates — the explanation itself is not.
 
 ## Rules
 
